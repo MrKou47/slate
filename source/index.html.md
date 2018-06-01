@@ -1,22 +1,26 @@
 ---
-title: API Reference
+title: understand_webpack
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='#'>Learn webpack with source code</a>
+  - <a href='https://github.com/lord/slate'>Powered by Slate</a>
 
 includes:
   - errors
 
-search: false
+search: true
 ---
 
-# Introduction
+# 前言
 
-Test API
+**注意!** 本文并不是 webpack 的官方文档。官方文档请移步 ➡ [webpack](https://webpack.js.org)
+
+本文档期望，经过对 webpack 源码的阅读，来更深入的了解这个工具。也方便日后在面对 webpack 方面的 error 时能够更快速的定位和解决。  
+阅读本文档之前，需要你已经能够熟练使用 webpack，并且详细阅读过 webpack 的官方文档。
+
 
 # Authentication
 

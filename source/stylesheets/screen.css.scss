@@ -540,6 +540,10 @@ html, body {
     padding-top: 2em;
     padding-bottom: 2em;
     padding: 2em $main-padding;
+
+    // &+p {
+    //   float: left;
+    // }
   }
 
   blockquote {
@@ -548,6 +552,9 @@ html, body {
       padding: $code-annotation-padding 2em;
       color: #eee;
     }
+    // &+p {
+    //   float: left;
+    // }
   }
 }
 

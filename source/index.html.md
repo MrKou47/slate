@@ -249,16 +249,6 @@ tapable 共提供了 6 种流程控制方法。其中：
 
 我们使用 [commonjs](https://github.com/webpack/webpack/tree/master/examples/commonjs) 作为例子。
 
-配置很简单，只有 entry，output， 基本的流程也很简单
-
-- options 验证
-- 根据 options 的类型, 创建 `MultiCompiler` 或 `Compiler`
-- 创建 `Compiler`
-  - `new NodeEnvironmentPlugin().apply(compiler)` 为 compiler 增加 `before-run` hook 
-  - 调用 `environment` 与 `after-environment` hook
-  - `new WebpackOptionsApply().process(options, compiler)` 为 compiler 增加一些 hook
-- 判断是否有 callback 参数来执行 webpack
-
 > debug.js
 
 ```js
@@ -315,3 +305,117 @@ function webpack(options, callback) {
 	return compiler;
 }
 ```
+
+配置很简单，只有 entry，output， 基本的流程也很简单
+
+- options 验证
+- 根据 options 的类型, 创建 `MultiCompiler` 或 `Compiler`
+- 创建 `Compiler`
+  - `new NodeEnvironmentPlugin().apply(compiler)` 为 compiler 增加 `before-run` hook 
+  - 调用 `environment` 与 `after-environment` hook
+  - `new WebpackOptionsApply().process(options, compiler)` 为 compiler 添加 hook
+- 判断是否有 callback 参数来执行 webpack
+
+## WebpackOptionsApply
+
+`WebpackOptionsApply.js` 里引入了所有的插件，并根据传入的 option 的不同来应用到 compiler 对象上。
+主要有针对 `target` 的处理， `output.library`, `output.libraryTarget` 的处理、`externals` 的处理
+
+> 这些插件能够处理所有的模块系统格式
+
+```js
+const LoaderPlugin = require("./dependencies/LoaderPlugin");
+const CommonJsPlugin = require("./dependencies/CommonJsPlugin");
+const HarmonyModulesPlugin = require("./dependencies/HarmonyModulesPlugin");
+const SystemPlugin = require("./dependencies/SystemPlugin");
+const ImportPlugin = require("./dependencies/ImportPlugin");
+const AMDPlugin = require("./dependencies/AMDPlugin");
+const RequireContextPlugin = require("./dependencies/RequireContextPlugin");
+const RequireEnsurePlugin = require("./dependencies/RequireEnsurePlugin");
+const RequireIncludePlugin = require("./dependencies/RequireIncludePlugin");
+```
+
+> 比较重要的 target="web" target="node"
+
+```js
+switch(options.target) {
+  case "web":
+    JsonpTemplatePlugin = require("./JsonpTemplatePlugin");
+    NodeSourcePlugin = require("./node/NodeSourcePlugin");
+    compiler.apply(
+      new JsonpTemplatePlugin(options.output),
+      new FunctionModulePlugin(options.output),
+      new NodeSourcePlugin(options.node),
+      new LoaderTargetPlugin(options.target)
+    );
+    break;
+  case "node":
+  case "async-node":
+    NodeTemplatePlugin = require("./node/NodeTemplatePlugin");
+    NodeTargetPlugin = require("./node/NodeTargetPlugin");
+    compiler.apply(
+      new NodeTemplatePlugin({
+        asyncChunkLoading: options.target === "async-node"
+      }),
+      new FunctionModulePlugin(options.output),
+      new NodeTargetPlugin(),
+      new LoaderTargetPlugin("node")
+    );
+    break;
+  default:
+    throw new Error("Unsupported target '" + options.target + "'.");
+}
+```
+
+基本流程可以概括为
+
+- options.target
+   - web
+   - webworker
+   - node/async-node
+   - node-webkit
+   - atom/electron/electron-main
+   - electron-renderer
+- library, libraryTarget
+  - LibraryTemplatePlugin
+- externals
+  - ExternalsPlugin
+- devtool
+- 增加 `entry-option` hook
+- 触发 `entry-option` (applyPluginsBailResult)
+- 应用插件
+  - CompatibilityPlugin
+  - HarmonyModulesPlugin
+  - AMDPlugin
+  - CommonJsPlugin
+  - LoaderPlugin
+  - NodeStuffPlugin
+  - RequireJsStuffPlugin
+  - APIPlugin
+  - ConstPlugin
+  - UseStrictPlugin
+  - RequireIncludePlugin
+  - RequireEnsurePlugin
+  - RequireContextPlugin
+  - ImportPlugin
+  - SystemPlugin
+  - EnsureChunkConditionsPlugin
+  - RemoveParentModulesPlugin
+  - RemoveEmptyChunksPlugin
+  - MergeDuplicateChunksPlugin
+  - FlagIncludedChunksPlugin
+  - OccurrenceOrderPlugin(true
+  - FlagDependencyExportsPlugin
+  - FlagDependencyUsagePlugin
+- options.performance
+  - SizeLimitsPlugin
+- 应用插件
+  - TemplatedPathPlugin
+  - RecordIdsPlugin
+  - WarnCaseSensitiveModulesPlugin
+- options.cache
+  - CachePlugin
+- 触发 `after-plugin` 钩子(applyPlugins)
+- compiler.resolvers 增加解析属性
+- 触发 `after-resolvers` 钩子(applyPlugins)
+

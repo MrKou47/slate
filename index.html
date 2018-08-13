@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>understand_webpack</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -198,13 +198,12 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+      <script src="javascripts/all.js"></script>
   </head>
 
   <body class="index" data-languages="[&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
-        NAV
         <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
@@ -213,272 +212,449 @@
         <div class="lang-selector">
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+            <a href="#6a07a7a6a8" class="toc-h1 toc-link" data-title="">前言</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="kittens">Kittens</a>
+            <a href="#tapable" class="toc-h1 toc-link" data-title="tapable">从 tapable 开始..</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="get-all-kittens">Get All Kittens</a>
+                    <a href="#apply" class="toc-h2 toc-link" data-title="apply">apply</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="get-a-specific-kitten">Get a Specific Kitten</a>
+                    <a href="#applyplugins" class="toc-h2 toc-link" data-title="applyplugins">applyPlugins</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="delete-a-specific-kitten">Delete a Specific Kitten</a>
+                    <a href="#applypluginsbailresult" class="toc-h2 toc-link" data-title="applypluginsbailresult">applyPluginsBailResult</a>
+                  </li>
+                  <li>
+                    <a href="#applypluginswaterfall" class="toc-h2 toc-link" data-title="applypluginswaterfall">applyPluginsWaterfall</a>
+                  </li>
+                  <li>
+                    <a href="#applypluginsasyncwaterfall" class="toc-h2 toc-link" data-title="applypluginsasyncwaterfall">applyPluginsAsyncWaterfall</a>
+                  </li>
+                  <li>
+                    <a href="#applypluginsasync-applypluginsasyncseries" class="toc-h2 toc-link" data-title="applypluginsasync-applypluginsasyncseries">applyPluginsAsync/applyPluginsAsyncSeries</a>
+                  </li>
+                  <li>
+                    <a href="#applypluginsparallel" class="toc-h2 toc-link" data-title="applypluginsparallel">applyPluginsParallel</a>
+                  </li>
+                  <li>
+                    <a href="#2029839d84" class="toc-h2 toc-link" data-title="">总结</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="errors">Errors</a>
+            <a href="#webpack" class="toc-h1 toc-link" data-title="webpack">webpack</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#38e9cd1ffb" class="toc-h2 toc-link" data-title="">入口</a>
+                  </li>
+                  <li>
+                    <a href="#webpackoptionsapply" class="toc-h2 toc-link" data-title="webpackoptionsapply">WebpackOptionsApply</a>
+                  </li>
+              </ul>
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='#'>Learn webpack with source code</a></li>
+            <li><a href='https://github.com/lord/slate'>Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Test API</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+        <h1 id='6a07a7a6a8'>前言</h1>
+<p><strong>注意!</strong> 本文并不是 webpack 的官方文档。官方文档请移步 ➡ <a href="https://webpack.js.org">webpack</a></p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>本文档期望，经过对 webpack 源码的阅读，来更深入的了解这个工具。也方便日后在处理 webpack 的 error 时能够更快速的定位和解决。
+阅读本文档之前，需要你已经能够熟练使用 webpack ，并且详细阅读过 webpack 的官方文档。</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+版本:   
+webpack: 3.12.0  
+tapable: 0.2.8  
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='tapable'>从 tapable 开始..</h1>
+<p>我们都知道 webpack 采用插件的机制，使用 tapable 来完成事件的注册与调用。tapable 实际上就是一个 <a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">Pub/Sub</a> 模式的实现。</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<blockquote>
+<p>tapable 核心实现</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">Tapable</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Tapable</span><span class="p">;</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<span class="c1">// 注册事件</span>
+<span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">plugin</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">plugin</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">plugin</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">fn</span><span class="p">);</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">fn</span><span class="p">];</span>
+    <span class="k">else</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">fn</span><span class="p">);</span>
+<span class="p">};</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
+<span class="c1">// 触发事件</span>
+<span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPlugins</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">applyPlugins</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">plugins</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="nx">plugins</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">apply</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">apply</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+<p>具体包含</p>
+
+<ul>
+<li>注册事件</li>
+<li>触发事件</li>
+<li>退订事件</li>
+</ul>
+
+<p>tapable 提供了多种对于回调函数的调用方式，webpack 也主要通过使用这些方法来控制整体构建流程。</p>
+<h2 id='apply'>apply</h2>
+<p>将tapable代码精简后，可以看到 tapable 并没有退订的实现，同时增加了一个 <code>apply</code> 的实现。</p>
+
+<p>我们知道书写插件的时候插件需要提供一个 apply 方法。我们定义的这个 <code>apply</code> 方法就是在此处调用的。具体调用方式为</p>
+<pre class="highlight javascript"><code><span class="nx">compilation</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">new</span> <span class="nx">CustomerPlugin</span><span class="p">());</span> <span class="c1">// then called (new CustomerPlugin()).apply(this) modify context </span>
+</code></pre><h2 id='applyplugins'>applyPlugins</h2>
+<p>普通的事件触发方式。通过使用 <code>Array.prototype.slice.call(arguments, 1)</code> 来获取事件需要的参数 <code>tapable.plugin(&#39;eventName&#39;, function(params){})</code>。</p>
+<pre class="highlight javascript"><code><span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPlugins</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">applyPlugins</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">plugins</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="nx">plugins</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre><h2 id='applypluginsbailresult'>applyPluginsBailResult</h2>
+<p>和 <code>applyPlugins</code> 类似。此方法提供了返回值。当在执行事件处理函数时，如果函数有返回值，则直接返回该值，同时跳出循环。</p>
+<pre class="highlight javascript"><code><span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPluginsBailResult</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">applyPluginsBailResult</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span> <span class="k">return</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">plugins</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">plugins</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">result</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+<p>同时提供了 <code>applyPluginsBailResult0</code>, <code>applyPluginsBailResult1</code>, <code>applyPluginsBailResult2</code>, <code>applyPluginsBailResult3</code>, <code>applyPluginsBailResult4</code>, <code>applyPluginsBailResult5</code></p>
+
+<p>需要注意的是，tapable 会通过定义不同的方法来指定事件需要的参数(如 <code>applyPlugins1(name, param)</code>, <code>applyPlugins2(name, param1, param2)</code>，
+从而省去 <code>Array.prototype.slice.call(arguments, 1)</code> 这个步骤。</p>
+<h2 id='applypluginswaterfall'>applyPluginsWaterfall</h2>
+<p><code>applyPluginsWaterfall(name: string, init: any): any</code><br>
+定义的事件处理函数将顺序执行，同时每一个事件处理函数接受的值为上一个处理函数执行的结果。可通过设置 <code>init</code> 参数来配置初始值。
+此方法带有返回值，值为最后一个事件处理函数的返回值。</p>
+<pre class="highlight javascript"><code><span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPluginsWaterfall</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">applyPluginsWaterfall</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">init</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span> <span class="k">return</span> <span class="nx">init</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">plugins</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="nx">init</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">current</span><span class="p">;</span>
+        <span class="nx">current</span> <span class="o">=</span> <span class="nx">plugins</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">current</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre>
+<p>同时提供 <code>applyPluginsWaterfall0</code>, <code>applyPluginsWaterfall1</code>, <code>applyPluginsWaterfall2</code></p>
+<h2 id='applypluginsasyncwaterfall'>applyPluginsAsyncWaterfall</h2>
+<p>异步的 <code>applyPluginsWaterfall</code> 的实现，用于顺序执行事件处理函数。流程控制。</p>
+<pre class="highlight javascript"><code><span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPluginsAsyncWaterfall</span> <span class="o">=</span>
+  <span class="kd">function</span> <span class="nx">applyPluginsAsyncWaterfall</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">init</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">init</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">plugins</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">next</span> <span class="o">=</span> <span class="nx">copyProperties</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">i</span> <span class="o">&gt;=</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nx">plugins</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="nx">_this</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">plugins</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">init</span><span class="p">,</span> <span class="nx">next</span><span class="p">);</span>
+  <span class="p">};</span>
+</code></pre><h2 id='applypluginsasync-applypluginsasyncseries'>applyPluginsAsync/applyPluginsAsyncSeries</h2><pre class="highlight javascript"><code><span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPluginsAsyncSeries</span> <span class="o">=</span>
+<span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPluginsAsync</span> <span class="o">=</span>
+  <span class="kd">function</span> <span class="nx">applyPluginsAsyncSeries</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">plugins</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">plugins</span> <span class="o">||</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">callback</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">copyProperties</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 一个经过包装后的 callback 函数。之后的事件处理函数接受的 callback 为此函数</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">return</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">i</span> <span class="o">&gt;=</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">callback</span><span class="p">();</span>
+      <span class="p">}</span>
+      <span class="nx">plugins</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="nx">_this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+    <span class="p">}));</span>
+    <span class="nx">plugins</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+  <span class="p">};</span>
+</code></pre>
+<p>顺序执行所有注册事件 注册的函数通过 callback 调用来继续执行下一个函数。可用于异步流程控制。
+提供了 <code>applyPluginsAsyncSeries1</code></p>
+<h2 id='applypluginsparallel'>applyPluginsParallel</h2>
+<p>并行执行事件处理函数。可接受任意个数的参数（保证最后一个参数为 callback）。
+一旦事件处理出错。则不再处理其他函数，同时触发 <code>callback(err)</code>。</p>
+<pre class="highlight javascript"><code><span class="nx">Tapable</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">applyPluginsParallel</span> <span class="o">=</span>
+  <span class="kd">function</span> <span class="nx">applyPluginsParallel</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">]</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">].</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">callback</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">plugins</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_plugins</span><span class="p">[</span><span class="nx">name</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">remaining</span> <span class="o">=</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="nx">args</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">copyProperties</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">remaining</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span> <span class="c1">// ignore</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">remaining</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+      <span class="p">}</span> 
+      <span class="nx">remaining</span><span class="o">--</span><span class="p">;</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">remaining</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">callback</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">}));</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">plugins</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">plugins</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">remaining</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+</code></pre><h2 id='2029839d84'>总结</h2>
+<p>tapable 共提供了 6 种流程控制方法。其中：</p>
+
+<ul>
+<li>applyPlugins 循环调用 不能保证完成顺序</li>
+<li>applyPluginsWaterfall 循环调用 可用于值的传递 拥有同步返回值</li>
+<li>applyPluginsAsyncWaterfall 在保证完成顺序的情况下做值的传递 可异步获取返回值</li>
+<li>applyPluginsAsync 在保证完成顺序的情况下调用事件处理函数</li>
+<li>applyPluginsParallel 并行执行事件处理函数</li>
+</ul>
+
+<p>理解这几个方法对于理解 webpack 工作流程非常重要。</p>
+<h1 id='webpack'>webpack</h1>
+<p>让我们从运行 webpack 开始。平时我们可能从 <em>shell</em> 运行 <code>$ webpack</code>, 也可能调用 <code>webpack(webpackConfig).run()</code> 来执行 webpack 方法。这一切的开始都包含了对于 webpack 配置的处理。
+这是一系列普通但是繁琐的过程。 包含了默认值的定义，配置的 <code>merge</code>，配置可用性的判断等等。我们先不考虑这一部分的功能，而是从 <code>webpack(webpackConfig).run()</code> 入手，使用一个最简单的配置来了解 webpack 的整体流程。</p>
+
+<p>当然，在此之前我们可以再看一下 <a href="https://webpack.js.org/api/compiler-hooks">compiler-hooks</a> 与 <a href="https://webpack.js.org/api/compilation-hooks">compilation-hooks</a>。我们可以理解为，在创造 webpack 的时候，
+人们预先约定了这些 hooks，用于分阶段的处理我们的代码，从而更好的对整体流程进行控制，也便于第三方插件的引入。学习 webpack 工作的机制，也就是学习 hooks 的工作流程。当我们弄清了这些 hook 在什么时候挂载、什么时候执行的时候，基本上
+也就弄清了 webpack 的整个流程。</p>
+<h2 id='38e9cd1ffb'>入口</h2>
+<p>我们使用 <a href="https://github.com/webpack/webpack/tree/master/examples/commonjs">commonjs</a> 作为例子。</p>
+
+<blockquote>
+<p>debug.js</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../../lib/webpack'</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="nx">webpack</span><span class="p">({</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="s1">'./example.js'</span><span class="p">,</span>
+  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'dist'</span><span class="p">),</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="s1">'bundle.js'</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="p">})</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>webpack.js</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<pre class="highlight javascript"><code><span class="kd">function</span> <span class="nx">webpack</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">webpackOptionsValidationErrors</span> <span class="o">=</span> <span class="nx">validateSchema</span><span class="p">(</span><span class="nx">webpackOptionsSchema</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">webpackOptionsValidationErrors</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">WebpackOptionsValidationError</span><span class="p">(</span><span class="nx">webpackOptionsValidationErrors</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">let</span> <span class="nx">compiler</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">compiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MultiCompiler</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">options</span> <span class="o">=&gt;</span> <span class="nx">webpack</span><span class="p">(</span><span class="nx">options</span><span class="p">)));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">options</span> <span class="o">===</span> <span class="s2">"object"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// TODO webpack 4: process returns options</span>
+        <span class="k">new</span> <span class="nx">WebpackOptionsDefaulter</span><span class="p">().</span><span class="nx">process</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+        <span class="nx">compiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Compiler</span><span class="p">();</span>
+        <span class="nx">compiler</span><span class="p">.</span><span class="nx">context</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">context</span><span class="p">;</span>
+        <span class="nx">compiler</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+        <span class="k">new</span> <span class="nx">NodeEnvironmentPlugin</span><span class="p">().</span><span class="nx">apply</span><span class="p">(</span><span class="nx">compiler</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">plugins</span> <span class="o">&amp;&amp;</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">plugins</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">compiler</span><span class="p">.</span><span class="nx">apply</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">compiler</span><span class="p">,</span> <span class="nx">options</span><span class="p">.</span><span class="nx">plugins</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">compiler</span><span class="p">.</span><span class="nx">applyPlugins</span><span class="p">(</span><span class="s2">"environment"</span><span class="p">);</span>
+        <span class="nx">compiler</span><span class="p">.</span><span class="nx">applyPlugins</span><span class="p">(</span><span class="s2">"after-environment"</span><span class="p">);</span>
+        <span class="nx">compiler</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WebpackOptionsApply</span><span class="p">().</span><span class="nx">process</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">compiler</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">"Invalid argument: options"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">callback</span> <span class="o">!==</span> <span class="s2">"function"</span><span class="p">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">"Invalid argument: callback"</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">watch</span> <span class="o">===</span> <span class="kc">true</span> <span class="o">||</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">o</span> <span class="o">=&gt;</span> <span class="nx">o</span><span class="p">.</span><span class="nx">watch</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">watchOptions</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">?</span> <span class="nx">options</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">o</span> <span class="o">=&gt;</span> <span class="nx">o</span><span class="p">.</span><span class="nx">watchOptions</span> <span class="o">||</span> <span class="p">{})</span> <span class="p">:</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">watchOptions</span> <span class="o">||</span> <span class="p">{});</span>
+            <span class="k">return</span> <span class="nx">compiler</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="nx">watchOptions</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">compiler</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">compiler</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<p>配置很简单，只有 entry，output， 基本的流程也很简单</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<ul>
+<li>options 验证</li>
+<li>根据 options 的类型, 创建 <code>MultiCompiler</code> 或 <code>Compiler</code></li>
+<li>创建 <code>Compiler</code>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<ul>
+<li><code>new NodeEnvironmentPlugin().apply(compiler)</code> 为 compiler 增加 <code>before-run</code> hook </li>
+<li>调用 <code>environment</code> 与 <code>after-environment</code> hook</li>
+<li><code>new WebpackOptionsApply().process(options, compiler)</code> 为 compiler 添加 hook</li>
+</ul></li>
+<li>判断是否有 callback 参数来执行 webpack</li>
+</ul>
+<h2 id='webpackoptionsapply'>WebpackOptionsApply</h2>
+<p><code>WebpackOptionsApply.js</code> 里引入了所有的插件，并根据传入的 option 的不同来应用到 compiler 对象上。
+主要有针对 <code>target</code> 的处理， <code>output.library</code>, <code>output.libraryTarget</code> 的处理、<code>externals</code> 的处理</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<blockquote>
+<p>这些插件能够处理所有的模块系统格式</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">LoaderPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/LoaderPlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">CommonJsPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/CommonJsPlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">HarmonyModulesPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/HarmonyModulesPlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">SystemPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/SystemPlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">ImportPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/ImportPlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">AMDPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/AMDPlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">RequireContextPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/RequireContextPlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">RequireEnsurePlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/RequireEnsurePlugin"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">RequireIncludePlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./dependencies/RequireIncludePlugin"</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>比较重要的 target=&quot;web&quot; target=&quot;node&quot;</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<pre class="highlight javascript"><code><span class="k">switch</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="s2">"web"</span><span class="p">:</span>
+    <span class="nx">JsonpTemplatePlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./JsonpTemplatePlugin"</span><span class="p">);</span>
+    <span class="nx">NodeSourcePlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./node/NodeSourcePlugin"</span><span class="p">);</span>
+    <span class="nx">compiler</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span>
+      <span class="k">new</span> <span class="nx">JsonpTemplatePlugin</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">output</span><span class="p">),</span>
+      <span class="k">new</span> <span class="nx">FunctionModulePlugin</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">output</span><span class="p">),</span>
+      <span class="k">new</span> <span class="nx">NodeSourcePlugin</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">node</span><span class="p">),</span>
+      <span class="k">new</span> <span class="nx">LoaderTargetPlugin</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">target</span><span class="p">)</span>
+    <span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="s2">"node"</span><span class="p">:</span>
+  <span class="k">case</span> <span class="s2">"async-node"</span><span class="p">:</span>
+    <span class="nx">NodeTemplatePlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./node/NodeTemplatePlugin"</span><span class="p">);</span>
+    <span class="nx">NodeTargetPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./node/NodeTargetPlugin"</span><span class="p">);</span>
+    <span class="nx">compiler</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span>
+      <span class="k">new</span> <span class="nx">NodeTemplatePlugin</span><span class="p">({</span>
+        <span class="na">asyncChunkLoading</span><span class="p">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">target</span> <span class="o">===</span> <span class="s2">"async-node"</span>
+      <span class="p">}),</span>
+      <span class="k">new</span> <span class="nx">FunctionModulePlugin</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">output</span><span class="p">),</span>
+      <span class="k">new</span> <span class="nx">NodeTargetPlugin</span><span class="p">(),</span>
+      <span class="k">new</span> <span class="nx">LoaderTargetPlugin</span><span class="p">(</span><span class="s2">"node"</span><span class="p">)</span>
+    <span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="nl">default</span><span class="p">:</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">"Unsupported target '"</span> <span class="o">+</span> <span class="nx">options</span><span class="p">.</span><span class="nx">target</span> <span class="o">+</span> <span class="s2">"'."</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+<p>基本流程可以概括为</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<ul>
+<li>options.target
 
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
+<ul>
+<li>web</li>
+<li>webworker</li>
+<li>node/async-node</li>
+<li>node-webkit</li>
+<li>atom/electron/electron-main</li>
+<li>electron-renderer</li>
+</ul></li>
+<li>library, libraryTarget
+
+<ul>
+<li>LibraryTemplatePlugin</li>
+</ul></li>
+<li>externals
+
+<ul>
+<li>ExternalsPlugin</li>
+</ul></li>
+<li>devtool</li>
+<li>增加 <code>entry-option</code> hook</li>
+<li>触发 <code>entry-option</code> (applyPluginsBailResult)</li>
+<li>应用插件
+
+<ul>
+<li>CompatibilityPlugin</li>
+<li>HarmonyModulesPlugin</li>
+<li>AMDPlugin</li>
+<li>CommonJsPlugin</li>
+<li>LoaderPlugin</li>
+<li>NodeStuffPlugin</li>
+<li>RequireJsStuffPlugin</li>
+<li>APIPlugin</li>
+<li>ConstPlugin</li>
+<li>UseStrictPlugin</li>
+<li>RequireIncludePlugin</li>
+<li>RequireEnsurePlugin</li>
+<li>RequireContextPlugin</li>
+<li>ImportPlugin</li>
+<li>SystemPlugin</li>
+<li>EnsureChunkConditionsPlugin</li>
+<li>RemoveParentModulesPlugin</li>
+<li>RemoveEmptyChunksPlugin</li>
+<li>MergeDuplicateChunksPlugin</li>
+<li>FlagIncludedChunksPlugin</li>
+<li>OccurrenceOrderPlugin(true</li>
+<li>FlagDependencyExportsPlugin</li>
+<li>FlagDependencyUsagePlugin</li>
+</ul></li>
+<li>options.performance
+
+<ul>
+<li>SizeLimitsPlugin</li>
+</ul></li>
+<li>应用插件
+
+<ul>
+<li>TemplatedPathPlugin</li>
+<li>RecordIdsPlugin</li>
+<li>WarnCaseSensitiveModulesPlugin</li>
+</ul></li>
+<li>options.cache
+
+<ul>
+<li>CachePlugin</li>
+</ul></li>
+<li>触发 <code>after-plugin</code> 钩子(applyPlugins)</li>
+<li>compiler.resolvers 增加解析属性</li>
+<li>触发 <code>after-resolvers</code> 钩子(applyPlugins)</li>
+</ul>
 
       </div>
       <div class="dark-box">

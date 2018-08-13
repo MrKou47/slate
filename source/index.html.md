@@ -196,7 +196,8 @@ Tapable.prototype.applyPluginsAsync =
 
 ## applyPluginsParallel
 
-并行执行事件处理函数。一旦事件处理出错。则不再处理其他函数，同时触发 `callback(err)`;
+并行执行事件处理函数。可接受任意个数的参数（保证最后一个参数为 callback）。
+一旦事件处理出错。则不再处理其他函数，同时触发 `callback(err)`。
 
 ```js
 Tapable.prototype.applyPluginsParallel =
